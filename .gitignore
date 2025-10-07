@@ -1,3 +1,7 @@
 # data files not to be shared >:(
-*/data
-*/results
+data/
+results/
+
+# ignore temp folders
+temp/
+tmp/
