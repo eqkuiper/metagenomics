@@ -5,3 +5,6 @@ results/
 # ignore temp folders
 temp/
 tmp/
+
+# ignore my ramblings
+notes
