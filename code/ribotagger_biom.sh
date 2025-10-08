@@ -26,4 +26,4 @@ mkdir -p "$out_dir"
 module load perl
 
 # run biom.pl from the ribotagger package
-"${ribotagger_dir}/biom.pl" -r "$region" -i "$in_dir/*.v4" -o "${out_dir}/${experiment_name}"
+"${ribotagger_dir}/biom.pl" -r "$region" -i $in_dir/*.${region} -o "${out_dir}/${experiment_name}"
