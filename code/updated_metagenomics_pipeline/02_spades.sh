@@ -26,7 +26,7 @@ metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 data_out="${out_dir}/02_assembled-spades/${metagenome}"
 mkdir -p $data_out
 
-# submit an assembly job for each genome from trimmomatic output
+# submit an assembly job for each metagenome from trimmomatic output
 echo "Assembling ${metagenome} using SPAdes ..."
 
 module purge all
