@@ -8,3 +8,6 @@ tmp/
 
 # ignore my ramblings
 notes
+
+# ignore old metagenomics pipeline
+code/metagenomics_pipeline
