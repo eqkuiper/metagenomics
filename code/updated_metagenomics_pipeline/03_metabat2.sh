@@ -24,7 +24,7 @@ mkdir -p "$out_dir"
 # load metabat2 conda environment
 module load python-miniconda3
 source activate /projects/p31618/software/metabat2-2.18
-export LD_LIBRARY_PATH=/projects/p31618/software/metabat2-2.18/lib:$LD_LIBRARY_PATH
+module load libdeflate
 
 # bin contigs with metabat2 for each subdirectory:
 for dir in "$spades_dir"/*/; do
