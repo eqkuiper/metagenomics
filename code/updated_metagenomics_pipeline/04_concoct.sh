@@ -33,8 +33,8 @@ source activate /projects/p31618/software/metawrap
 ## as of Oct 10, 2025, metawrap has not been updated since ~3 ybp
 
 # copy reads to scratch directory, rename with _[1,2].fastq ending required by metaWRAP
-forward=$reads_dir/${metagenome}*_R1_paired.fastq.gz
-reverse=$reads_dir/${metagenome}*_R2_paired.fastq.gz
+forward=$reads_dir/${metagenome}*_R1_paired.fastq
+reverse=$reads_dir/${metagenome}*_R2_paired.fastq
 cp $forward /scratch/$USER
 cp $reverse /scratch/$USER
 cd /scratch/$USER
