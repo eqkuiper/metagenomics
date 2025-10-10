@@ -38,7 +38,7 @@ mkdir -p $out_dir/$sample
 
 SECONDS=0
 metabat \
--i $contigs_dir/scaffolds.fasta \
+-i $dir/scaffolds.fasta \
 -m ${min_contig_length[$SLURM_ARRAY_TASK_ID]} \
 -o $out_dir/$sample/${sample}_bin \
 -t $SLURM_NTASKS \
