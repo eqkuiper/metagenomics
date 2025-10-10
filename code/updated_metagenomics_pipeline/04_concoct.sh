@@ -33,14 +33,24 @@ source activate /projects/p31618/software/metawrap
 ## as of Oct 10, 2025, metawrap has not been updated since ~3 ybp
 module load bwa
 
-# copy reads to scratch directory, rename with _[1,2].fastq ending required by metaWRAP
-forward=$reads_dir/${metagenome}*_R1_paired.fastq
-reverse=$reads_dir/${metagenome}*_R2_paired.fastq
-cp $forward /scratch/$USER
-cp $reverse /scratch/$USER
+# Copy reads to scratch, handle gzipped or plain fastq
+forward=$(ls $reads_dir/${metagenome}*_R1_paired.fastq*)
+reverse=$(ls $reads_dir/${metagenome}*_R2_paired.fastq*)
+
+# Determine if files are gzipped, copy to scratch, rename with _[1,2].fastq ending required by metaWRAP
+if [[ $forward == *.gz ]]; then
+    cp $forward /scratch/$USER/${metagenome}_1.fastq.gz
+    cp $reverse /scratch/$USER/${metagenome}_2.fastq.gz
+    read1=/scratch/$USER/${metagenome}_1.fastq.gz
+    read2=/scratch/$USER/${metagenome}_2.fastq.gz
+else
+    cp $forward /scratch/$USER/${metagenome}_1.fastq
+    cp $reverse /scratch/$USER/${metagenome}_2.fastq
+    read1=/scratch/$USER/${metagenome}_1.fastq
+    read2=/scratch/$USER/${metagenome}_2.fastq
+fi
+
 cd /scratch/$USER
-gzip -dc $forward > "${metagenome}_1.fastq"
-gzip -dc $reverse > "${metagenome}_2.fastq"
 
 # note: /projects/p31618/software/metawrap contains dependencies for concoct package here
 metawrap binning \
