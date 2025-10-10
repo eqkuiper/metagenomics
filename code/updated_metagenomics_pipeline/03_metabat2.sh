@@ -22,7 +22,6 @@ out_dir=${parent_dir}/03_metabat2-scaffolds-c_${min_contig_length[$SLURM_ARRAY_T
 mkdir -p $out_dir 
 
 # load metabat2 conda environment
-module purge
 module load python-miniconda3
 source activate /projects/p31618/software/metabat2-2.18
 
