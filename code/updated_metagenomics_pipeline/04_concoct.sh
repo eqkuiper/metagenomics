@@ -13,11 +13,11 @@
 
 ### USER INPUTS
 # define parent genome directory and trimmed reads folder
-parent_dir=/projects/p32449/2025-10-07_maca_metaG 
+parent_dir=/projects/p32449/maca_mags_metabolic/2025-10-07_maca_metaG 
 assemblies=/scratch/jhr1326/02_assembled-spades # assemblies directory
 out_dir=${parent_dir}/04_metaWRAP-initial-bins # output directory
 reads_dir=${parent_dir}/01_trimmomatic_out # trimmed reads folder
-sample_list=/projects/p32449/data/mags_to_annotate_assemblies.txt # list of samples
+sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt # list of samples
 ###############
 
 mkdir -p $out_dir
