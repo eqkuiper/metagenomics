@@ -6,7 +6,7 @@
 #SBATCH -n 4
 #SBATCH --array=0-20  # change to number of metagenomes
 #SBATCH --mem=8G
-#SBATCH --job-name=metawrap-binning_concoct
+#SBATCH --job-name=metawrap-binning_maxbin2
 #SBATCH --mail-user=esmee@u.northwestern.edu # change to your email
 #SBATCH --mail-type=BEGIN,FAIL,END
 #SBATCH --output=%A_%a-%x.out
@@ -27,10 +27,11 @@ IFS=$'\n' read -d '' -r -a input_args < $sample_list
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 
 module purge all
-PATH=/projects/p31618/software/metaWRAP/bin/:$PATH
+PATH=/projects/p31618/software/metawrap-1.2/bin/:$PATH
 module load mamba
-source activate /projects/p31618/software/metawrap 
+source activate /projects/p31618/software/metawrap-1.2
 ## as of Oct 10, 2025, metawrap has not been updated since ~3 ybp
+## this env contains v 2.2.7 of maxbin2
 module load bwa
 module load openssl
 module load samtools
