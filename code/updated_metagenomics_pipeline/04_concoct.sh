@@ -61,3 +61,4 @@ metawrap binning \
   -a ${assemblies}/${metagenome}/scaffolds.fasta \
   --concoct \
   /scratch/$USER/${metagenome}*.fastq
+  
