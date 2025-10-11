@@ -15,7 +15,7 @@
 # define parent genome directory and trimmed reads folder
 parent_dir=/projects/p32449/maca_mags_metabolic/data/2025-10-07_maca_metaG 
 assemblies=/scratch/jhr1326/02_assembled-spades # assemblies directory
-out_dir=${parent_dir}/04_metaWRAP-initial-bins # output directory
+out_dir=${parent_dir}/05_metaWRAP-maxbin2 # output directory
 reads_dir=${parent_dir}/01_trimmomatic_out # trimmed reads folder
 sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt # list of samples
 ###############
@@ -29,9 +29,9 @@ metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 module purge all
 PATH=/projects/p31618/software/metawrap-1.2/bin/:$PATH
 module load mamba
-source activate /projects/p31618/software/metawrap-1.2
+source activate /projects/p31618/software/metawrap-binning
 ## as of Oct 10, 2025, metawrap has not been updated since ~3 ybp
-## this env contains v 2.2.7 of maxbin2
+## should check back later to try to fix bc maxbin2 has been updated more recently
 module load bwa
 module load openssl
 module load samtools
