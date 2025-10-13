@@ -27,9 +27,8 @@ IFS=$'\n' read -d '' -r -a input_args < $sample_list
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 
 module purge all
-PATH=/projects/p31618/software/metawrap-1.2/bin/:$PATH
 module load mamba
-source activate /projects/p31618/software/metawrap
+source activate /projects/p31618/software/metawrap-1.2
 ## as of Oct 10, 2025, metawrap has not been updated since ~3 ybp
 ## should check back later to try to fix bc maxbin2 has been updated more recently
 module load bwa
