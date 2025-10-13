@@ -27,13 +27,13 @@ IFS=$'\n' read -d '' -r -a input_args < $sample_list
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 
 module purge all
-PATH=/projects/p31618/software/metaWRAP/bin/:$PATH
 module load mamba
 source activate /projects/p31618/software/metawrap
 ## as of Oct 10, 2025, metawrap has not been updated since ~3 ybp
 module load bwa
 module load openssl
 module load samtools
+export PATH=/projects/p31618/software/metabat2-2.18/bin:$PATH # export path to metabat2
 
 # Copy reads to scratch, handle gzipped or plain fastq
 forward=$(ls $reads_dir/${metagenome}*_R1_paired.fastq*)
