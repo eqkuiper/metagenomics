@@ -20,6 +20,8 @@ reads_dir=${parent_dir}/01_trimmomatic_out # trimmed reads folder
 sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt # list of samples
 ###############
 
+mkdir -p $out_dir
+
 module load python-miniconda3
 source activate /projects/p31618/software/maxbin2-2.2.7
 export PATH=/projects/p31618/software/maxbin2-2.2.7/bin:$PATH
