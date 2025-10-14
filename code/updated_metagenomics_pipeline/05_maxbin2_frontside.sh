@@ -50,7 +50,7 @@ fi
 cd /scratch/$USER
 
 # run maxbin2
-perl run_MaxBin.pl \
+/projects/p32449/goop_stirrers/miniconda3/pkgs/maxbin2-2.2.7-h503566f_6/bin/run_MaxBin.pl \
 -contig ${assemblies}/${metagenome}/scaffolds.fasta \
 -reads $read1 \
 -reads2 $read2 \
