@@ -23,6 +23,10 @@ sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblie
 module load python-miniconda3
 source activate /projects/p31618/software/maxbin2-2.2.7
 
+export HMMER3_PATH=/projects/p31618/software/maxbin2-2.2.7/bin
+echo $HMMER3_PATH
+ls $HMMER3_PATH
+
 # list of samples from which to bin (not run):
 IFS=$'\n' read -d '' -r -a input_args < $sample_list
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
