@@ -10,7 +10,7 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 
 # USER INPUTS
-contig="/scratch/jhr1326/02_assembled-spades/CX_GO_13_21_S3"
+contig="/scratch/jhr1326/02_assembled-spades/CX_GO_13_21_S3/contigs.fasta"
 fastq1="/scratch/jhr1326/CX_GO_13_21_S3_1.fastq" 
 fastq2="/scratch/jhr1326/CX_GO_13_21_S3_2.fastq"
 out="/scratch/jhr1326/02.5_align_test"
