@@ -22,6 +22,8 @@ sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblie
 
 module load python-miniconda3
 source activate /projects/p31618/software/maxbin2-2.2.7
+export PATH=/projects/p31618/software/maxbin2-2.2.7/bin:$PATH
+module load mpi/openmpi-4.1.1-gcc.10.2.0
 
 # list of samples from which to bin (not run):
 IFS=$'\n' read -d '' -r -a input_args < $sample_list
@@ -50,7 +52,7 @@ fi
 cd /scratch/$USER
 
 # run maxbin2
-/projects/p32449/goop_stirrers/miniconda3/pkgs/maxbin2-2.2.7-h503566f_6/bin/run_MaxBin.pl \
+run_MaxBin.pl \
 -contig ${assemblies}/${metagenome}/scaffolds.fasta \
 -reads $read1 \
 -reads2 $read2 \
