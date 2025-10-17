@@ -20,6 +20,7 @@ path_to_bamfiles=/scratch/jhr1326/02.5_align_test # DIR with bam files
 module load python-miniconda3
 eval "$(conda shell.bash hook)"
 conda activate /projects/p32449/goop_stirrers/miniconda3/envs/comebin_env
+module load cuda
 
 # preprocess bam files
 echo "Sorting BAM files and generating sorted coverage files..."
