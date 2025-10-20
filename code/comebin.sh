@@ -12,8 +12,6 @@
 #SBATCH --mail-type=BEGIN,FAIL,END
 #SBATCH --output=%A_%a-%x.out
 
-set -euo pipefail
-
 # USER INPUTS
 contig_dir=/scratch/jhr1326/02_assembled-spades
 output_dir=/scratch/jhr1326/2025-10-20_COMEBin
