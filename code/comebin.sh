@@ -10,7 +10,7 @@
 #SBATCH --job-name=comebin
 #SBATCH --mail-user=esmee@u.northwestern.edu # change to your email
 #SBATCH --mail-type=BEGIN,FAIL,END
-#SBATCH --output=%A-%x.out
+#SBATCH --output=%A_%a-%x.out
 
 set -euo pipefail
 
