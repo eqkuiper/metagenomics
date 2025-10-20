@@ -25,14 +25,23 @@ mkdir -p $output_dir
 
 # define metagenome
 echo "Defining metagenome"
-IFS=$'\n' read -d '' -r -a input_args < "${metagenome_list}"
+mapfile -t input_args < "${metagenome_list}"
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 
 # make output directory for each genome
 meta_out="${output_dir}/${metagenome}"
 mkdir -p $meta_out
 
-echo "Will use COMEBin to bin $metagenome"
+echo "We will use COMEBin to bin $metagenome! Let's check to make sure everything is in its place..."
+if [[ ! -f "$contig_dir/${metagenome}/scaffolds.fasta" ]]; then
+    echo "ERROR: scaffolds not found for $metagenome"
+    exit 1
+fi
+if [[ ! -d "$aligned_dir/$metagenome" ]]; then
+    echo "ERROR: alignments not found for $metagenome"
+    exit 1
+fi
+echo "Looks like everything's in its place. Let's proceed! :)"
 
 # set up
 echo "Booting up conda"
