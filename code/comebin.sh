@@ -55,7 +55,7 @@ echo "Running COMEBin. Sit back and relax..."
 run_comebin.sh \
 -a $contig_dir/${metagenome}/scaffolds.fasta \
 -o $meta_out \
--p $aligned_dir/$metagenome \
+-p $aligned_dir/${metagenome}_sorted.bam \
 -t 4
 
 echo "COMEBin run over! Go! Be free!!!" 
