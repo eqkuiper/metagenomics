@@ -24,6 +24,7 @@ metagenome_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assem
 mkdir -p $output_dir
 
 # define metagenome
+echo "Defining metagenome"
 IFS=$'\n' read -d '' -r -a input_args < "${metagenome_list}"
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 
@@ -31,7 +32,10 @@ metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 meta_out="${output_dir}/${metagenome}"
 mkdir -p $meta_out
 
+echo "Will use COMEBin to bin $metagenome"
+
 # set up
+echo "Booting up conda"
 module load python-miniconda3
 eval "$(conda shell.bash hook)"
 conda activate /projects/p32449/goop_stirrers/miniconda3/envs/comebin_env
