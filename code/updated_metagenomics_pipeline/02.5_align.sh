@@ -4,7 +4,8 @@
 #SBATCH -t 12:00:00              # Max time
 #SBATCH -N 1                     # Number of nodes
 #SBATCH -n 4                     # Number of CPU cores
-#SBATCH --mem=16G                # Memory
+#SBATCH --array=0-20             # Adjust to number of metagenomes
+#SBATCH --mem=60G                # Memory
 #SBATCH --job-name=bowtie2_align
 #SBATCH --mail-user=youremail@domain.com
 #SBATCH --mail-type=BEGIN,END,FAIL
