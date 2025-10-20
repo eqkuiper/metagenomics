@@ -10,18 +10,32 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 
 # USER INPUTS
-contig="/scratch/jhr1326/02_assembled-spades/CX_GO_13_21_S3/contigs.fasta"
-fastq1="/scratch/jhr1326/CX_GO_13_21_S3_1.fastq" 
-fastq2="/scratch/jhr1326/CX_GO_13_21_S3_2.fastq"
-out="/scratch/jhr1326/02.5_align_test"
+metagenome_list="/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt" # list of metagenomes
+contig_dir="/scratch/jhr1326/02_assembled-spades"
+reads_dir="/projects/p32449/maca_mags_metabolic/data/2025-10-07_maca_metaG/01_trimmomatic_out"
+out_dir="/scratch/jhr1326/2025-10-20_02.5_align"
 #############
 
-outfile="$out/aligned.sam"
-errorlog="$out/error.log"
+mkdir -p $out_dir
 
-mkdir -p $out
+# define metagenome
+IFS=$'\n' read -d '' -r -a input_args < "${metagenome_list}"
+metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
+
+# make output directory for each genome
+data_out="${out_dir}/${metagenome}"
+mkdir -p $data_out
+
+# define inputs for bowtie2 function
+contig="$contig_dir/$metagenome/contigs.fasta"
+fastq1="$reads_dir/${metagenome}_R1_paired.fastq"
+fastq2="$reads_dir/${metagenome}_R2_paired.fastq"
+outfile="$data_out/${metagenome}.sam"
+errorlog="$data_out/${metagenome}.err"
+bamfile="$data_out/${metagenome}.bam"
 
 module load bowtie2 # load bowtie module aready in Quest
+module load samtools
 
 # Build index if not already done
 if [ ! -f "${contig}.1.bt2" ]; then
@@ -41,4 +55,36 @@ if [ $? -ne 0 ]; then
 else
     echo "Alignment completed successfully at $(date)"
 fi
+
+# Convert to BAM file required for most downstream processing steps
+echo "Converting SAM to BAM for $metagenome..."
+samtools view -bS "$outfile" > "$bamfile"
+
+# Sort and index BAM
+echo "Sorting and indexing BAM file..."
+samtools sort "$bamfile" -o "${data_out}/${metagenome}_sorted.bam"
+if [ $? -ne 0 ]; then
+    echo "samtools sorting failed for $metagenome" >> "$errorlog"
+    exit 1
+else
+    echo "BAM sorting completed successfully at $(date)"
+fi
+
+samtools index "${data_out}/${metagenome}_sorted.bam"
+if [ $? -ne 0 ]; then
+    echo "samtools index failed for $metagenome" >> "$errorlog"
+    exit 1
+else
+    echo "BAM indexing completed successfully at $(date)"
+fi
+
+# Final verification
+if [ -f "${data_out}/${metagenome}_sorted.bam" ] && [ -f "${data_out}/${metagenome}_sorted.bam.bai" ]; then
+    echo "All steps completed successfully for $metagenome at $(date)"
+else
+    echo "Final output files missing for $metagenome — check logs." >> "$errorlog"
+    exit 1
+fi
+
+echo "Job finished for $metagenome on $(hostname) at $(date). Best of luck with the rest of your day!"
 
