@@ -28,7 +28,7 @@ data_out="${out_dir}/${metagenome}"
 mkdir -p $data_out
 
 # define inputs for bowtie2 function
-contig="$contig_dir/$metagenome/contigs.fasta"
+contig="$contig_dir/$metagenome/scaffolds.fasta"
 fastq1="$reads_dir/${metagenome}_R1_paired.fastq"
 fastq2="$reads_dir/${metagenome}_R2_paired.fastq"
 outfile="$data_out/${metagenome}.sam"
