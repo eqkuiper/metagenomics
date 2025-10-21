@@ -51,10 +51,10 @@ module load cuda
 
 # make tmp dirs for sorted .bam files
 echo "Just gotta make a direcory for the alignment files we want..."
-tmp_dir=$SLURM_TMPDIR
+tmp_dir=/scratch/jhr1326/tmp
 mkdir -p $tmp_dir/$metagenome
 
-cp -r /scratch/jhr1326/$aligned_dir/$metagenome/*sorted.bam $tmp_dir/$metagenome
+cp -r $aligned_dir/$metagenome/*sorted.bam $tmp_dir/$metagenome
 
 # run COMEBin
 
