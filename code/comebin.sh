@@ -11,6 +11,7 @@
 #SBATCH --mail-user=esmee@u.northwestern.edu # change to your email
 #SBATCH --mail-type=BEGIN,FAIL,END
 #SBATCH --output=%A_%a-%x.out
+#SBATCH --error=%A_%a-%x.err
 
 # USER INPUTS
 contig_dir=/scratch/jhr1326/02_assembled-spades
