@@ -41,7 +41,7 @@ else
 fi
 
 # Run GToTree
-echo: "Running GToTree..."
+echo "Running GToTree..."
 GToTree -f $genome_list -H Bacteria_and_Archaea -o $out_dir
 
 echo "Tree building complete. Goodbye."
