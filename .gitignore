@@ -1,6 +1,8 @@
 # data files not to be shared >:(
 data/
 results/
+ncbi_big_download/
+reference_fasta/
 
 # ignore temp folders
 temp/
