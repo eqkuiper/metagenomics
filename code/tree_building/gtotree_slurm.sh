@@ -16,7 +16,7 @@ genome_list=/projects/p32449/maca_mags_metabolic/data/2025-09-16_metagenomes/gen
 # Path to conda environment with GToTree installed
 gtotree=/projects/p32449/goop_stirrers/miniconda3/envs/gtotree
 # Directory where the outputs from GToTree will go
-out_dir=/projects/p32449/maca_mags_metabolic/data/2025-10-21_GToTree_out
+out_dir=/projects/p32449/maca_mags_metabolic/data/2025-10-28_GToTree_out
 ##############
 
 # Make the output directory if it doesn't already exist
