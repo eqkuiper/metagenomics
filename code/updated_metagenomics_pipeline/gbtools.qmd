@@ -1,0 +1,14 @@
+---
+title: bin visualization with gbtools
+---
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(gbtools)
+```
+
+```{r}
+
+```
