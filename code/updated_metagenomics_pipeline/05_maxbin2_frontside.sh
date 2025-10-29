@@ -15,12 +15,10 @@
 # define parent genome directory and trimmed reads folder
 parent_dir=/projects/p32449/maca_mags_metabolic/data/2025-10-07_maca_metaG 
 assemblies=/scratch/jhr1326/02_assembled-spades # assemblies directory
-out_dir=/scratch/jhr1326/05_maxbin2 # output directory
+out_dir=/scratch/jhr1326/05_maxbin2_folders # output directory
 reads_dir=${parent_dir}/01_trimmomatic_out # trimmed reads folder
 sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt # list of samples
 ###############
-
-mkdir -p $out_dir
 
 module load python-miniconda3
 source activate /projects/p31618/software/maxbin2-2.2.7
@@ -53,11 +51,13 @@ fi
 # go to scratch for local processing
 cd /scratch/$USER
 
+mkdir -p $out_dir/${metagenome}
+
 # run maxbin2
 run_MaxBin.pl \
 -contig ${assemblies}/${metagenome}/scaffolds.fasta \
 -reads $read1 \
 -reads2 $read2 \
--out $out_dir/${metagenome}_maxbin2
+-out $out_dir/${metagenome}/${metagenome}_maxbin2
 
 echo "Finished sample: $metagenome"
