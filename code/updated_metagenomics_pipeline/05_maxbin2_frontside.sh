@@ -24,6 +24,8 @@ module load python-miniconda3
 source activate /projects/p31618/software/maxbin2-2.2.7
 export PATH=/projects/p31618/software/maxbin2-2.2.7/bin:$PATH
 module load mpi/openmpi-4.1.1-gcc.10.2.0
+module load bowtie2
+module load hmmer
 
 # list of samples from which to bin (not run):
 IFS=$'\n' read -d '' -r -a input_args < $sample_list
