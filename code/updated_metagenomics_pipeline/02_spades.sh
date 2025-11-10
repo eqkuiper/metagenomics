@@ -23,7 +23,7 @@ IFS=$'\n' read -d '' -r -a input_args < "${metagenome_list}"
 metagenome=${input_args[$SLURM_ARRAY_TASK_ID]}
 
 # make output directory for each genome
-data_out="${out_dir}/02_assembled-spades/${metagenome}"
+data_out="${out_dir}/02_assembled-spades_10Nov2025/${metagenome}"
 mkdir -p $data_out
 
 # submit an assembly job for each metagenome from trimmomatic output

@@ -3,7 +3,7 @@
 #SBATCH -p genomics
 #SBATCH -t 48:00:00
 #SBATCH -N 1
-#SBATCH -n 4
+#SBATCH -n 1
 #SBATCH --array=0-20  # change to number of metagenomes
 #SBATCH --mem=8G
 #SBATCH --job-name=maxbin2
@@ -15,15 +15,24 @@
 # define parent genome directory and trimmed reads folder
 parent_dir=/projects/p32449/maca_mags_metabolic/data/2025-10-07_maca_metaG 
 assemblies=/scratch/jhr1326/02_assembled-spades # assemblies directory
-out_dir=/scratch/jhr1326/2025-11-04_05_maxbin2_folders # output directory
+out_dir=/projects/p32449/maca_mags_metabolic/data/2025-10-07_maca_metaG/05_maxbin_out # output directory
 reads_dir=${parent_dir}/01_trimmomatic_out # trimmed reads folder
 sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt # list of samples
 ###############
 
+mkdir -p $out_dir
+
 module load python-miniconda3
-source activate /projects/p31618/software/maxbin2-2.2.7
+eval "$(conda shell.bash hook)" 
+conda activate /projects/p31618/software/maxbin2-2.2.7
 export PATH=/projects/p31618/software/maxbin2-2.2.7/bin:$PATH
 module load mpi/openmpi-4.1.1-gcc.10.2.0
+
+# Verify dependencies for debugging
+echo "Checking binary locations..."
+which hmmscan || { echo "hmmscan not found! Exiting."; exit 1; }
+which FragGeneScan || { echo "FragGeneScan not found! Exiting."; exit 1; }
+which bowtie2 || { echo "bowtie2 not found! Exiting."; exit 1; }
 
 # list of samples from which to bin (not run):
 IFS=$'\n' read -d '' -r -a input_args < $sample_list
