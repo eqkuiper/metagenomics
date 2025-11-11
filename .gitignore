@@ -17,3 +17,6 @@ code/metagenomics_pipeline
 # ignore output and error logs
 *.err
 *.out
+
+# ignore stale/unused code
+code/stale_code
