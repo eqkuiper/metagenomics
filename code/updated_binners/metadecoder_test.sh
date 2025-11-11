@@ -21,7 +21,7 @@ metadecoder coverage \
 
 # Step 2: Map single-copy marker genes to the assembly
 metadecoder seed --threads 50 \
--f /scratch/jhr1326/02_assembled-spades_10Nov2025/CX_GO_13_21_S3/scaffolds.fasta
+-f /scratch/jhr1326/02_assembled-spades_10Nov2025/CX_GO_13_21_S3/scaffolds.fasta \
 -o METADECODER.SEED
 
 # Step 3: Run MetaDecoder algorithm to cluster contigs
