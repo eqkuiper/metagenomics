@@ -16,17 +16,17 @@ conda activate /projects/p31618/software/MetaDecoder-1.2.1
 
 # Step 1: Obtain coverage of contigs
 metadecoder coverage \
--b /scratch/jhr1326/2025-10-20_02.5_align/BS_MC_01_21_S1/BS_MC_01_21_S1_sorted.bam \
+-b /scratch/jhr1326/2025-10-20_02.5_align/CX_GO_13_21_S3/CX_GO_13_21_S3_sorted.bam \
 -o METADECODER.COVERAGE
 
 # Step 2: Map single-copy marker genes to the assembly
 metadecoder seed --threads 50 \
--f /scratch/jhr1326/02_assembled-spades_10Nov2025/BS_MC_01_21_S1/scaffolds.fasta
+-f /scratch/jhr1326/02_assembled-spades_10Nov2025/CX_GO_13_21_S3/scaffolds.fasta
 -o METADECODER.SEED
 
 # Step 3: Run MetaDecoder algorithm to cluster contigs
 metadecoder cluster \
--f /scratch/jhr1326/02_assembled-spades_10Nov2025/BS_MC_01_21_S1/scaffolds.fasta \
+-f /scratch/jhr1326/02_assembled-spades_10Nov2025/CX_GO_13_21_S3/scaffolds.fasta \
 -c METADECODER.COVERAGE \
 -s METADECODER.SEED \
 -o METADECODER_test
