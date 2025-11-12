@@ -5,18 +5,18 @@
 #SBATCH -N 1
 #SBATCH -n 4
 #SBATCH --mem=20G
-#SBATCH --array=0-19                        # <-- adjust based on sample count
+#SBATCH --array=0-20                        # <-- adjust based on sample count
 #SBATCH --job-name=metadecoder_array
 #SBATCH --mail-user=esmee@u.northwestern.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --output=logs/%A_%a_metadecoder.out  # one log per array job
+#SBATCH --output=%A_%a_metadecoder.out  # one log per array job
 
 ################################################################################
 #                          USER CONFIGURATION SECTION
 ################################################################################
 
 # --- Sample list (one metagenome ID per line)
-sample_list="/projects/p31618/sample_lists/metadecoder_samples.txt"
+sample_list="/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt"
 
 # --- Input directories
 bam_dir="/scratch/jhr1326/2025-10-20_02.5_align"
