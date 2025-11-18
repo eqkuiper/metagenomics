@@ -14,7 +14,7 @@ library(paletteer)
 # Relative paths
 tsv_fp <- "data/2025-09-16_metabolic_out_tsv1"
 color_fp <- "data/color_dictionary_draft07.csv"
-classification_fp <- "data/2025-09-25_gtdbtk_outputs/arbac_all_out.csv"
+classification_fp <- "data/arbac_all_out.csv"
 isotopes_fp <- "data/mammoth_meta_may25.csv"
 metadata_fp <- "data/MasterSampleList(sediment&water).csv"
 
@@ -117,7 +117,7 @@ prep_nmds <- function(df, cat_filter = NULL) {
 }
 
 nmds_datasets <- list(
-  "All marked genes" = prep_nmds(tsvs_metadata),
+  "All annotated metabolic genes" = prep_nmds(tsvs_metadata),
   "Nitrogen cycling" = prep_nmds(tsvs_metadata, "Nitrogen cycling"),
   "C1 metabolism/C fixation" = prep_nmds(tsvs_metadata, c("C1 metabolism","Methane metabolism","Carbon fixation")),
   "Sulfur cycling" = prep_nmds(tsvs_metadata, c("Sulfur cycling"))
@@ -163,7 +163,7 @@ server <- function(input, output, session) {
                         text = paste0("bin: ", bin, "<br>",
                                       "sample: ", reconciled_name, "<br>",
                                       color_var, ": ", df[[color_var]]))) +
-      geom_point(size = 3, alpha = 0.7) + theme_classic() + labs(color = color_var)
+      geom_point(size = 1, alpha = 0.7) + theme_classic() + labs(color = color_var)
     
     if(is.numeric(df[[color_var]])) {
       p <- p + scale_color_paletteer_c("ggthemes::Purple", na.value = "grey")

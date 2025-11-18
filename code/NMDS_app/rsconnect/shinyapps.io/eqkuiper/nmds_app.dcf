@@ -5,6 +5,6 @@ account: eqkuiper
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 16102222
-bundleId: 11196259
+bundleId: 11196324
 url: https://eqkuiper.shinyapps.io/nmds_app/
 version: 1
