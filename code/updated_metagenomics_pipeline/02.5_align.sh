@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -A b1042                 # Account
-#SBATCH -p genomics              # Partition
+#SBATCH -p genomics-himem             # Partition
 #SBATCH -t 12:00:00              # Max time
 #SBATCH -N 1                     # Number of nodes
 #SBATCH -n 4                     # Number of CPU cores
@@ -12,9 +12,9 @@
 
 # USER INPUTS
 metagenome_list="/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt" # list of metagenomes
-contig_dir="/scratch/jhr1326/02_assembled-spades"
+contig_dir="/scratch/jhr1326/02_assembled-spades_10Nov2025"
 reads_dir="/projects/p32449/maca_mags_metabolic/data/2025-10-07_maca_metaG/01_trimmomatic_out"
-out_dir="/scratch/jhr1326/2025-10-20_02.5_align"
+out_dir="/scratch/jhr1326/2025-10-20_02.5_align_20Nov2025"
 #############
 
 mkdir -p $out_dir
