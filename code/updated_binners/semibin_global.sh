@@ -1,13 +1,12 @@
 #!/bin/bash
 #SBATCH -A b1042
-#SBATCH -p genomics-gpu
-#SBATCH --gres=gpu:a100:1
+#SBATCH -p genomics-himem
 #SBATCH -t 24:00:00
 #SBATCH -N 1
-#SBATCH -n 4
-#SBATCH --mem=50G
+#SBATCH -n 16
+#SBATCH --mem=G
 #SBATCH --array=0-20                        # <-- adjust based on sample count
-#SBATCH --job-name=semibin_array_take_2
+#SBATCH --job-name=semibin_array_bernardo
 #SBATCH --mail-user=esmee@u.northwestern.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --output=%A_%a_semibin.out  # one log per array job
@@ -24,7 +23,7 @@ bam_dir="/scratch/jhr1326/2025-10-20_02.5_align"
 fasta_dir="/scratch/jhr1326/02_assembled-spades_10Nov2025"
 
 # --- Output root directory (one subdir per metagenome will be made)
-out_root="/scratch/jhr1326/semibin_results_gpu"
+out_root="/scratch/jhr1326/semibin_results_cpu"
 
 # --- Conda environment for MetaDecoder
 semibin_env="/projects/p32449/goop_stirrers/miniconda3/envs/SemiBin"
