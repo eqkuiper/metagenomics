@@ -32,7 +32,7 @@ module load mamba
 source activate /projects/p31618/software/metawrap
 PATH=/projects/p31618/software/metaWRAP/bin:$PATH
 
-#mkdir -p "${output_dir}/${metagenome}"
+mkdir -p "${output_dir}/${metagenome}"
 
 metawrap bin_refinement \
   -o ${output_dir}/${metagenome} \
