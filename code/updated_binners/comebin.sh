@@ -14,9 +14,9 @@
 #SBATCH --error=%A_%a-%x.err
 
 # USER INPUTS
-contig_dir=/scratch/jhr1326/02_assembled-spades
-output_dir=/scratch/jhr1326/2025-10-21_COMEBin
-aligned_dir=/scratch/jhr1326/2025-10-20_02.5_align
+contig_dir=/scratch/jhr1326/02_assembled-spades_10Nov2025
+output_dir=/scratch/jhr1326/2025-11-21_COMEBin # make sure this dir is empty/doesn't exist
+aligned_dir=/scratch/jhr1326/2025-10-20_02.5_align_20Nov2025 
 metagenome_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt
 #############
 

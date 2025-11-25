@@ -19,11 +19,11 @@
 sample_list="/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt"
 
 # --- Input directories
-bam_dir="/scratch/jhr1326/2025-10-20_02.5_align"
+bam_dir="/scratch/jhr1326/2025-10-20_02.5_align_20Nov2025"
 fasta_dir="/scratch/jhr1326/02_assembled-spades_10Nov2025"
 
 # --- Output root directory (one subdir per metagenome will be made)
-out_root="/scratch/jhr1326/metadecoder_results"
+out_root="/projects/p32449/maca_mags_metabolic/data/2025-11-21_metadecoder_results"
 
 # --- Conda environment for MetaDecoder
 metadecoder_env="/projects/p31618/software/MetaDecoder-1.2.1"
