@@ -30,7 +30,7 @@ source activate /projects/p31618/software/metawrap
 PATH=/projects/p31618/software/metaWRAP/bin:$PATH
 module load bwa
 module load checkm
-module load spades/3.14.1
+module load spades
 
 # get metagenome ID for this array task
 IFS=$'\n' read -d '' -r -a input_args < ${sample_list}
