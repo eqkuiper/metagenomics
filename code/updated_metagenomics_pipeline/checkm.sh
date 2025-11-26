@@ -13,8 +13,8 @@
 
 # USER INPUTS ----------------------------
 parent_dir=/projects/p32449/maca_mags_metabolic
-input_genomes=${parent_dir}/data/2025-10-21_COMEBin
-checkm_out=${parent_dir}/data/2025-11-21_checkm/COMEBin_checkm
+input_genomes=${parent_dir}/data
+checkm_out=${parent_dir}/data/2025-10-07_maca_metaG/checkm_out
 scratch=/scratch/${USER}/tmp
 sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt # list of samples
 # -----------------------------------------
