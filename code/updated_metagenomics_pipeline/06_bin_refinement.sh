@@ -34,11 +34,18 @@ PATH=/projects/p31618/software/metaWRAP/bin:$PATH
 
 mkdir -p "${output_dir}/${metagenome}"
 
+# this section of code makes a temp dir for metadecoder bins
+# comment out or remove if not using metadecoder
+
+mkdir -p "${bins_b_dir}/${metagenome}/bins"
+cp ${bins_b_dir}/${metagenome}/*.fasta ${bins_b_dir}/${metagenome}/bins/
+
+
 metawrap bin_refinement \
   -o ${output_dir}/${metagenome} \
   -t $SLURM_NTASKS \
   -A ${bins_a_dir}/${metagenome}/comebin_res/comebin_res_bins \
-  -B ${bins_b_dir}/${metagenome}/*.fasta \
+  -B ${bins_b_dir}/${metagenome}/bins \
   -C ${bins_c_dir}/${metagenome}/output_bins \
   -c 50 -x 50
 
