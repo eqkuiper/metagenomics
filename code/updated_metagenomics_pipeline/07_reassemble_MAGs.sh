@@ -13,11 +13,9 @@
 #SBATCH --output=%A_%a-%x.out
 
 # user inputs -----------------------------
-## note that you may need to chance the structure of the actual metawrap command (at the bottom of this file)
-## depending on the structure of your bin directories
 sample_list=/projects/p32449/maca_mags_metabolic/data/mags_to_annotate_assemblies.txt
 initial_bins=/scratch/jhr1326/2025-11-25_metaWRAP-refined-bins-50compl-50contam
-output_dir=/scratch/jhr1326/2025-11-26_reassembled_bins
+output_dir=/scratch/jhr1326/2025-11-26_reassembled_bins_newenv
 reads_dir=/projects/p31618/nu-seq/Osburn02_12.10.2021_metagenomes/reads
 # ------------------------------------------
 
