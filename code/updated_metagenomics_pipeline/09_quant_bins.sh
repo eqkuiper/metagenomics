@@ -38,7 +38,7 @@ tmp_bin_dir=/scratch/${USER}/tmp-nonreassembled-bins/${metagenome}
 mkdir -p ${tmp_bin_dir}
 
 # copy bin fastas to tmp
-cp ${initial_bins}/${metagenome}/*.fa ${tmp_bin_dir}
+cp ${initial_bins}/${metagenome}/metawrap_50_50_bins/*.fa ${tmp_bin_dir}
 
 # temp read directory (per job)
 tmp_read_dir=/scratch/${USER}/tmp-read-pairs/${metagenome}
