@@ -40,17 +40,17 @@ module load samtools
 export OMP_NUM_THREADS=1
 
 # Generate concatenated.fa
-Echo "Generating concenated fasta..."
+echo "Generating concenated fasta..."
 SemiBin2 concatenate_fasta \
     --input-fasta ${fasta_dir}/*.fasta \
     --output ${out_root} \
     --verbose
 
 # Build index for concatenated fasta
-Echo "Indexing concatenated fasta..."
+echo "Indexing concatenated fasta..."
 bowtie2 ${out_root}/concatenated.fa.gz ${out_root}/concatenated_idx
 
-Echo "Aligning by sample..."
+echo "Aligning by sample..."
 for fasta in ${fasta_dir}/*.fasta; do 
     sample=$(basename ${fasta} .fasta)
     bowtie2 \
