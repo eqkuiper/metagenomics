@@ -48,11 +48,11 @@ SemiBin2 concatenate_fasta \
 
 # Build index for concatenated fasta
 echo "Indexing concatenated fasta..."
-bowtie2 ${out_root}/concatenated.fa.gz ${out_root}/concatenated_idx
+bowtie2-build ${out_root}/concatenated.fa.gz ${out_root}/concatenated_idx
 
 echo "Aligning by sample..."
 for fasta in ${fasta_dir}/*.fasta; do 
-    sample=$(basename ${fasta} .fasta)
+    sample=$(basename ${fasta} .scaffolds.fasta)
     bowtie2 \
     -x ${out_root}/concatenated_idx \
     -1 ${reads_dir}/${sample}_R1_paired.fastq \
