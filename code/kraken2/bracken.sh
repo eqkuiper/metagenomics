@@ -61,6 +61,12 @@ if [[ ! -f "${KRAKEN_REPORT}" ]]; then
     exit 1
 fi
 
+# Skip if output already exists
+if [[ -f "${SAMPLE_OUT}/${SAMPLE}.bracken.P.tsv" ]]; then
+echo "[$(date)] Output already exists, skipping: ${SAMPLE}.bracken.P.tsv"
+exit 0
+fi
+
 echo "[$(date)] Running Bracken at phylum level..."
 
 bracken \
